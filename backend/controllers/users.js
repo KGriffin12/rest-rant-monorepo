@@ -1,9 +1,10 @@
+//route handler that runs when our sign-up form is submitted
 const router = require('express').Router()
 const db = require("../models")
 const bcrypt = require('bcrypt')
 
 const { User } = db
-
+//line 8-15 adds to database
 router.post('/', async (req, res) => {
     let { password, ...rest } = req.body;
     const user = await User.create({ 
@@ -12,3 +13,10 @@ router.post('/', async (req, res) => {
     })
     res.json(user)
 })   
+
+router.get('/', async (req, res) => {
+    const users = await User.findAll()
+    res.json(users)
+})
+
+module.exports = router

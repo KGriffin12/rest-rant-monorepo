@@ -4,7 +4,19 @@ const bcrypt = require('bcrypt')
 
 const { User } = db
 
+  
+// router.post('/', async (req, res) => {
+
+//     let user = await User.findOne({
+//         where: { email: req.body.email }
+//     })
+
+//     console.log(user)
+// })
+  
+  //compare the password we collected from the front end with the passwordDigest we have stored in our back end
 router.post('/', async (req, res) => {
+    
     let user = await User.findOne({
         where: { email: req.body.email }
     })
@@ -17,5 +29,6 @@ router.post('/', async (req, res) => {
         res.json({ user })
     }
 })
+
 
 module.exports = router
